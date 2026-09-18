@@ -69,11 +69,48 @@ Emandako adina 26 bada, honakoa erakutsiko du: â€œ20 eta 30 urteen tartean dagoâ
         <div class="ariketa ariketa3">
             <h2>Ariketa 3</h2>
             <form action="" method="GET">
-                zenbakia 1: <input name=""
+                zenbakia 1: <input type="number" name="ar3_zenbakia1">
+                <input type="submit">
             </form>
-        </div>
+            <?php
+                $ar3_zenbakia1 = $_GET["ar3_zenbakia1"];
+                $tartea = 0;
+                for ($i = 0; $i <= 100 && $i <= $ar3_zenbakia1; $i += 10) {
+                    $tartea = $i;
+                }
+                echo '<p>' . $tartea . ' eta ' . $tartea + 10 . ' urteen tartean dago</p>';
 
+            ?>
+        </div>
+<?php
+//Ariketa 4: Palindromoa
+/*
+Hitz bat emanda, palindromoa den adierazi. Palindromoa ezkerretik eskuinera edo eskuinetik ezkerrera berdin irakurtzen den hitz edo esaldi bat da. */
+?>
+        <div class="ariketa ariketa4">
+            <h2>Ariketa 4</h2>
+            <form action="" method="GET">
+                hitza = <input method="GET" action="" name="ar4_hitza">
+                <input type="submit">
+            </form>
+            <?php
+                $ar4_hitza = $_GET['ar4_hitza'];
+
+                $array = str_split($ar4_hitza);
+                $reverse_array = array();
+
+                for ($i = 0; $i < count($array); $i++) {
+                    $reverse_array[$i] = $array[count($array) - 1 - $i];
+                }
+
+                if ($reverse_array == $array) {
+                    echo "<p>Hitza palindromoa da</p>";
+                } else {
+                    echo "<p>Hitza ez da palindromoa</p>";
+                }
+            ?>
+        </div>
     </body>
 </html>
-
+<?php
 
