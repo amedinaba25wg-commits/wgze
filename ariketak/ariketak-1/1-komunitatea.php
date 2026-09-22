@@ -186,6 +186,57 @@ Potentzia:3 eta Kantitatea:100
                 echo $html_egitura;
             ?>
         </div>
+<?php
+//Ariketa 7: Integer positiboa
+/*
+Ondorengo eragiketa inplementatu, edozein zenbaki oso positibori aplika dakiokeena:
+a.	Zenbakia bikoitia bada, zati 2 egingo da.
+b.	Zenbakia bakoitia bada, 3kin biderkatu eta gehitu 1.
+	Bukaeran beti 1-koa lortuko da.
+	Adibidea: 13, 40, 20, 10, 5, 16, 8, 4, 2, 1
+*/
+?>
+        <div class="ariketa ariketa7">
+            <h2>Ariketa 7</h2>
+            <form>
+                Zenbakia: <input type="number" action="" method="GET" name="ar7_zenbakia">
+                <input type="submit">
+            </form>
+            <?php
+                $zenbakia = -1;
+                if(!empty($_GET['ar7_zenbakia'])) {
+                    $zenbakia = $_GET['ar7_zenbakia'];
+                    echo '<p>Sartutako zenbakia ' . $zenbakia . ' da.</p>';
+                    $html_egitura = "<p>Emaitza: $zenbakia";
+                    while($zenbakia != 1) {
+                        if($zenbakia % 2 == 0) {
+                            $zenbakia /= 2;
+                        }
+                        else {
+                            $zenbakia *= 3;
+                            $zenbakia++;
+                        }
+                        $html_egitura = $html_egitura . ', ' . $zenbakia;
+                    }
+                    $html_egitura = $html_egitura . "</p>";
+                    echo $html_egitura;
+                }
+            ?>
+        </div>
+<?php
+//Ariketa 8: Piramidea
+/*
+Ondorengo kodea inplementatu non, bakoitia izan behar duen “oinarri”zko aldagai bat emanik, ondorengo irudia inprimatuko duen:
+    *
+   ***
+  *****
+ *******
+
+*/
+?>
+        <div class="ariketa ariketa8">
+            
+        </div>
     </body>
 </html>
 
