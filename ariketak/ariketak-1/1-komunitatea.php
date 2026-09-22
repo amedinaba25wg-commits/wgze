@@ -235,8 +235,41 @@ Ondorengo kodea inplementatu non, bakoitia izan behar duen “oinarri”zko alda
 */
 ?>
         <div class="ariketa ariketa8">
-            
+            <h2>Ariketa 8</h2>
+            <form>
+                Zenbakia: <input type="number" action="" method="GET" name="ar8_zenbakia">
+                <input type="submit">
+            </form>
+            <?php
+                if(!empty($_GET['ar8_zenbakia'])) {
+                    $ar8_zenbakia = $_GET['ar8_zenbakia'];
+                    if($ar8_zenbakia % 2 == 0) {
+                        echo "<p>Sartutako zenbakia bikoitia da, bakoitia izan behar da piramidea egiteko</p>";
+                    }
+                    else {
+                        $html_egitura = "<pre>";
+                        for($i = 1; $i <= $ar8_zenbakia; $i += 2) {
+                            $hutsuneak = ($ar8_zenbakia - $i)/2;
+                            for($j = 1; $j <= $hutsuneak; $j++) {
+                                $html_egitura = $html_egitura . " ";
+                            }
+                            for($j = 1; $j <= $i; $j++) {
+                                $html_egitura = $html_egitura . "*";
+                            }
+                            $html_egitura = $html_egitura . "<br>";
+                        }
+                        $html_egitura = $html_egitura . "</pre>";
+                        echo $html_egitura;
+                    }
+                }
+            ?>
         </div>
+<?php
+//Ariketa 9: Komisioa
+/*
+Saltzaile baten komisioa kalkulatu nahi dugu. Komisioa salmenten zenbatekoa gehi salmenten zenbatekoan oinarritzen den ehunekoa da. 10.000 €baino gutxiago saldu badituzu, % 5 da, % 8 10.000 eta 20.000 artean, % 10 20.000 eta 40.000 artean eta % 13 40.000 baino gehiago. 
+*/
+?>
     </body>
 </html>
 
