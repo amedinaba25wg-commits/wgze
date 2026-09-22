@@ -145,7 +145,7 @@ Atrakzio parke baterako sarrera kontrolatu nahi da. 10 urtetik gorakoak edo 120 
             ?>
         </div>
 <?php
-//Berreketak
+//Ariketa 6: Berreketak
 /*
 Berreketa eta kantitate bat emanda, erakutsi zenbakiak eta beraien berreketak, berreketa baino txikiagoa den bitartean.
 Adibidez:
@@ -160,10 +160,31 @@ Potentzia:3 eta Kantitatea:100
         <div class="ariketa ariketa6">
             <h2>Ariketa 6</h2>
             <form action="" method="GET">
-                Berreketaren potentzia: <input type="number" method="GET" name="ar6_berretzailea">
-                Zenbaki maximoa: <input type="number" method="GET" name="ar6_maximoa">
+                Berreketaren potentzia: <input type="number" method="GET" action="" name="ar6_berretzailea">
+                Zenbaki maximoa: <input type="number" method="GET" name="ar6_maximoa" action="">
                 <input type="submit">
             </form>
+            <?php
+                $ar6_berretzailea = $_GET['ar6_berretzailea'];
+                $ar6_maximoa = $_GET['ar6_maximoa'];
+                $html_egitura = "<p>Berretzailea: $ar6_berretzailea <br>Maximoa: $ar6_maximoa</p><table>
+                    <tr>
+                        <td>Zenbakia</td>
+                        <td>Berreketa</td>
+                    </tr>";
+                $zenbakia = 1;
+                $emaitza = 1;
+                while($emaitza <= $ar6_maximoa) {
+                    $html_egitura = $html_egitura . "<tr><td>$zenbakia</td><td>$emaitza</td></tr>";
+                    $zenbakia++;
+                    $emaitza = $zenbakia;
+                    for($i = 1; $i < $ar6_berretzailea; $i++) {
+                        $emaitza *= $zenbakia;
+                    }
+                }
+                $html_egitura = $html_egitura . "</table>";
+                echo $html_egitura;
+            ?>
         </div>
     </body>
 </html>
