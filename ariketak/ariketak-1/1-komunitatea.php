@@ -317,8 +317,37 @@ Erakutsi erosketaren azken prezioa, kontuan hartuta % 10 BEZ gehitu behar zaiola
 */
 ?>
         <div class="ariketa ariketa10">
+            <h2>Ariketa 10</h2>
+            <form>
+                Erosketa-saskiaren zenbatekoa: <input type="number" method="" action="GET" name="guztira-erosketa"><br>
+                <label for="mota">Mota:</label>
+                    <select name="erosketa-mota" id="erosketa-mota">
+                        <option value="maskotak">maskotak</option>
+                        <option value="jantziak">jantziak</option>
+                    </select>
+                <input type="submit">
+            </form>
+            <?php
+                if(!empty($_GET['guztira-erosketa'])) {
+                    $guztira_erosketa = $_GET['guztira-erosketa'];
+                    $erosketa_mota = $_GET['erosketa-mota'];
+                    $html_egitura = "";
+                    if($guztira_erosketa < 19) {
+                        $html_egitura = match($erosketa_mota) {
+                            "maskotak" => "<p>Ezin bidali</p>",
+                            "jantziak" => "<p>Bidalketa gastuak 9 euro dira",
+                        };
+                    }
+                    elseif($guztira_erosketa < 40) {
+                        
+                    }
+                    else {
 
-</div>
+                    }
+                    echo $html_egitura;
+                }
+            ?>
+        </div>
     </body>
 </html>
 
