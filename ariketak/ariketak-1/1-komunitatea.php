@@ -270,6 +270,55 @@ Ondorengo kodea inplementatu non, bakoitia izan behar duen “oinarri”zko alda
 Saltzaile baten komisioa kalkulatu nahi dugu. Komisioa salmenten zenbatekoa gehi salmenten zenbatekoan oinarritzen den ehunekoa da. 10.000 €baino gutxiago saldu badituzu, % 5 da, % 8 10.000 eta 20.000 artean, % 10 20.000 eta 40.000 artean eta % 13 40.000 baino gehiago. 
 */
 ?>
+        <div class="ariketa ariketa9">
+            <h2>Ariketa 9</h2>
+            <form>
+                Salmentak(€): <input type="number" action="" method="GET" name="ar9_salmentak">
+                <input type="submit">
+            </form>
+            <?php
+                if(!empty($_GET['ar9_salmentak'])) {
+                    $ar9_salmentak = $_GET['ar9_salmentak'];
+                    $komisioa = 0;
+                    if($ar9_salmentak < 10000) {
+                        $komisioa = $ar9_salmentak * 1.05;
+                    }
+                    elseif ($ar9_salmentak < 20000) {
+                        $komisioa = $ar9_salmentak * 1.08;
+                    }
+                    elseif($ar9_salmentak < 40000) {
+                        $komisioa = $ar9_salmentak * 1.1;
+                    }
+                    else {
+                        $komisioa = $ar9_salmentak * 1.13;
+                    }
+                    $html_egitura = "<p>Salmentak " . $ar9_salmentak . "€ izan dirak, komisioak kalkulatuta: " . $komisioa . "€-ko komisioa izan da.</p>";
+                    echo $html_egitura;
+                }
+            ?>
+        </div>
+<?php
+//Ariketa 10: Online denda
+/*
+Datu hauek ditugu:
+●	Erosketa-saskiaren zenbatekoa $guztira-erosketa, zenbakia bi hamartarrekin.
+●	$erosketa-mota aldagaiak "maskotak" edo "jantziak" eduki ditzake.
+
+Idatzi beharrezko kodea aplikatzeko:
+
+Bezeroaren erosketa 19 euro baino txikiagoa bada:
+●	Produktuak maskotenak badira, mezu bat agertuko da: “-ezin bidali. "
+●	Produktuak jantziak badira, mezu hau agertuko da: "Bidalketa gastuak 9 euro dira".
+
+Erosketak 19 eta 40 euro arteko zenbatekoa badu, mezua adieraziko da: "Bidalketa gastuak 9 euro dira".
+Erosketa 80 eurotik gorakoa bada, bidalketa gastuak doakoak direla adierazi behar dugu.
+
+Erakutsi erosketaren azken prezioa, kontuan hartuta % 10 BEZ gehitu behar zaiola maskotei buruzkoa bada, eta % 21 jantziei buruzkoa bada.
+*/
+?>
+        <div class="ariketa ariketa10">
+
+</div>
     </body>
 </html>
 
