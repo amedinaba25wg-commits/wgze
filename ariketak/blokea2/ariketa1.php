@@ -14,9 +14,9 @@
         for($i = 0; $i < 10; $i++) {
             $faktorial_array = array();
             $faktoriala = 1;
-            for($j = $i; $j >= 1 || $i = 0; j--;) {
+            for($j = $i; $j >= 1 || ($i = 0 && $j == 0); $j--) {
                 $faktoriala *= $j;
-                $faktorial_array[$j];
+                $faktorial_array[] = $j;
             }
         } 
     ?>
