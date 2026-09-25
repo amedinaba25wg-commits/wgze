@@ -11,6 +11,11 @@
     <h2>Erantzuna</h2>
     <?php
         $arraya = array();
+        $html_egitura = '<center><table border="1px"><tr><td>Zenbakia</td>';
+        for($i = 0; $i < 10; $i++) {
+            $html_egitura = $html_egitura . "<td><center>" . $i . "</center></td>";
+        }
+        $html_egitura = $html_egitura . "</tr><tr><td>Faktoriala</td>";
         for($i = 0; $i < 10; $i++) {
             $faktorial_array = array();
             $faktoriala = 1;
@@ -18,7 +23,19 @@
                 $faktoriala *= $j;
                 $faktorial_array[] = $j;
             }
-        } 
+            $html_egitura = $html_egitura . "<td>" . $i . "! = ";
+            for($j = sizeof($faktorial_array); $j > 0; $j--) {
+                $html_egitura = $html_egitura . $j;
+                if($j != 1) {
+                    $html_egitura = $html_egitura . " x ";
+                }
+                else {
+                    $html_egitura = $html_egitura . " = ";
+                }
+            }
+            $html_egitura = $html_egitura . "<strong>" . $faktoriala . "</strong>" . "</td>";
+        }
+        echo $html_egitura;
     ?>
 </body>
 </html>
