@@ -14,9 +14,9 @@
         $hitzak = explode(" ", $frasea);
         $emaitza = [];
         foreach($hitzak as $hitza) {
-            $emitza[$hitza] = strlen($hitza);
+            $emaitza[$hitza] = strlen($hitza);
         }
-        print_r($hitzak);
+        print_r($emaitza);
     ?>
 </body>
 </html>
