@@ -36,7 +36,67 @@
         $korrikalaria1 = new Korrikalaria("Sandra", 1);
         $korrikalaria2 = new Korrikalaria("henry", 2);
         $korrikalaria3 = new Korrikalaria("Oier", 3);
-        $korrikalaria4 = new Korrikalaria("Mei", 4);
+        $korrikalaria4 = new Korrikalaria("Meie", 4);
+        $txapelketa->korrikalariaGehitu($korrikalaria1);
+        $txapelketa->korrikalariaGehitu($korrikalaria2);
+        $txapelketa->korrikalariaGehitu($korrikalaria3);
+        $txapelketa->korrikalariaGehitu($korrikalaria4);
+        $txapelketa->gehituLasterketaKorrikalariari(1, 20);
+        $txapelketa->gehituLasterketaKorrikalariari(1, 10);
+        $txapelketa->gehituLasterketaKorrikalariari(1, 11);
+        $txapelketa->gehituLasterketaKorrikalariari(1, 9);
+        $txapelketa->gehituLasterketaKorrikalariari(1, 8);
+        $txapelketa->gehituLasterketaKorrikalariari(2, 10);
+        $txapelketa->gehituLasterketaKorrikalariari(2, 10);
+        $txapelketa->gehituLasterketaKorrikalariari(2, 6);
+        $txapelketa->gehituLasterketaKorrikalariari(2, 14);
+        $txapelketa->gehituLasterketaKorrikalariari(3, 10);
+        $txapelketa->gehituLasterketaKorrikalariari(3, 10);
+        $txapelketa->gehituLasterketaKorrikalariari(3, 9);
+        $txapelketa->gehituLasterketaKorrikalariari(3, 11);
+        $txapelketa->gehituLasterketaKorrikalariari(3, 10);
+        $txapelketa->gehituLasterketaKorrikalariari(4, 12);
+        $txapelketa->gehituLasterketaKorrikalariari(4, 7);
+        $txapelketa->gehituLasterketaKorrikalariari(4, 8);
+        $txapelketa->gehituLasterketaKorrikalariari(4, 8);
+
+
+        echo "<h3>Korrikalarien batezbestekoa</h3>";
+        echo "<table border='1'><tr><td>Korrikalaria</td><td>Batez besteko denbora</td></tr>";
+        
+        $korrikalariBizkorrena = $korrikalaria1; //Momentuz bat gero ya egiten zaio begiratzea nork den azkarragoa
+        $korrikalariBizkorrenaBB = 4; //Batazbestekoa
+        foreach($txapelketa->getZerrenda() as $korrikalaria) {
+            $batezBestekoa = 0;
+            $kontagailua = 0;
+            //Begiratuko da ere bai zein den korrikalari bizkorrena:
+            foreach($korrikalaria->getLasterketaDenborak() as $denbora) {
+                $batezBestekoa += $denbora;
+                $kontagailua++;
+            }
+            $batezBestekoa /= $kontagailua;
+            if ($batezBestekoa < $korrikalariBizkorrenaBB || $korrikalariBizkorrenaBB == 4) {
+                $korrikalariBizkorrena = $korrikalaria;
+                $korrikalariBizkorrenaBB = $batezBestekoa;
+            }
+            echo "<tr><td>" . $korrikalaria->getIzena() ."</td><td>$batezBestekoa</td></tr>";
+        }
+        echo "</table>";
+
+        
+        $batezbestekoa1 = 0;
+        $kontagailua = 0;
+        foreach($txapelketa->getZerrenda() as $korrikalaria) {
+            $lasterketakoDenborak = $korrikalaria->getLasterketaDenborak();
+            $batezbestekoa1 += $lasterketakoDenborak[0];
+            $kontagailua++;
+        }
+        $batezbestekoa1 /= $kontagailua;
+        echo "<p>Batez besteko media lehenengo karreran: " . $batezbestekoa1 . "s-koa izan da</p>";
+
+        echo "<h3>Korrikalari bizkorrena</h3>";
+        echo "<p>Korrikalari bizkorrena " . $korrikalariBizkorrena->getIzena() . " da batezbestekoa kontuan edukita</p>.";
+
     ?>
 </body>
 </html>

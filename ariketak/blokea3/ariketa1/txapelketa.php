@@ -2,13 +2,17 @@
     class Txapelketa {
         private $zerrenda;
         function korrikalariaGehitu($korrikalaria) {
-            $zerrenda[$korrikalaria->getKodea()] = $korrikalaria;
+            $this->zerrenda[$korrikalaria->getKodea()] = $korrikalaria;
         }
         function gehituLasterketaKorrikalariari($kodea, $lasterketaDenbora) {
-            $zerrenda[$kodea]->lasterketaGehitu($lasterketaDenbora);
+            $this->zerrenda[$kodea]->lasterketaGehitu($lasterketaDenbora);
         }
         function __construct() {
-            $this->zerrenda = new array();
+            $this->zerrenda = array();
         }    
+
+        function getZerrenda() {
+            return $this->zerrenda;
+        }
     }
 ?>
