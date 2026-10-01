@@ -43,7 +43,7 @@
         $txapelketa->korrikalariaGehitu($korrikalaria4);
         $txapelketa->gehituLasterketaKorrikalariari(1, 20);
         $txapelketa->gehituLasterketaKorrikalariari(1, 10);
-        $txapelketa->gehituLasterketaKorrikalariari(1, 11);
+        $txapelketa->gehituLasterketaKorrikalariari(1, 16);
         $txapelketa->gehituLasterketaKorrikalariari(1, 9);
         $txapelketa->gehituLasterketaKorrikalariari(1, 8);
         $txapelketa->gehituLasterketaKorrikalariari(2, 10);
@@ -97,6 +97,25 @@
         echo "<h3>Korrikalari bizkorrena</h3>";
         echo "<p>Korrikalari bizkorrena " . $korrikalariBizkorrena->getIzena() . " da batezbestekoa kontuan edukita</p>.";
 
+        echo "<h3>gutxienez 2 lasterketetan 15s baino gehiago</h3>";
+        $korrikalariak15 = array();
+        foreach($txapelketa->getZerrenda() as $korrikalaria) {
+            $lasterketaKopurua15 = 0;
+            foreach($korrikalaria->getLasterketaDenborak() as $lasterketa) {
+                if($lasterketa >= 15) {
+                    $lasterketaKopurua15++;
+                }
+            }
+            if($lasterketaKopurua15 >= 2) {
+                $korrikalariak15[] = $korrikalaria;
+            }
+        }
+        echo "<p>Hurrengo korrikalariak dira 15s baino gehiago egin dituztenak gutxienez bi lasterketetan: </p>";
+        echo "<ul>";
+        foreach($korrikalariak15 as $korrikalaria) {
+            echo "<li>" . $korrikalaria->getIzena() . "</li>";
+        }
+        echo "</ul>";
     ?>
 </body>
 </html>
