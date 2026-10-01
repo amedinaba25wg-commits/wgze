@@ -97,7 +97,7 @@
         echo "<h3>Korrikalari bizkorrena</h3>";
         echo "<p>Korrikalari bizkorrena " . $korrikalariBizkorrena->getIzena() . " da batezbestekoa kontuan edukita</p>.";
 
-        echo "<h3>gutxienez 2 lasterketetan 15s baino gehiago</h3>";
+        echo "<h3>Gutxienez 2 lasterketetan 15s baino gehiago</h3>";
         $korrikalariak15 = array();
         foreach($txapelketa->getZerrenda() as $korrikalaria) {
             $lasterketaKopurua15 = 0;
@@ -114,6 +114,16 @@
         echo "<ul>";
         foreach($korrikalariak15 as $korrikalaria) {
             echo "<li>" . $korrikalaria->getIzena() . "</li>";
+        }
+        echo "</ul>";
+
+        echo "<h3>E letrarekin bukatzen diren izenak</h3>";
+        echo "<p>Hurrengo korrikalarien izenak e letrarekin bukatzen dira</p><ul>";
+        foreach($txapelketa->getZerrenda() as $korrikalaria) {
+            $izena = $korrikalaria->getIzena();
+            if($izena[strlen($izena) - 1] == 'e') {
+                echo "<li>$izena</li>";
+            }
         }
         echo "</ul>";
     ?>
