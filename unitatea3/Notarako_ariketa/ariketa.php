@@ -7,7 +7,11 @@
 </head>
 <body>
     <center><h1>Ariketa - Top Movies</h1></center>
-    <div id="filmak"></div>
+    <div id="filmak">
+        <?php
+            
+        ?>
+    </div>
     <form method="POST">
         <label for="izena">Izena:</label><input type="text" name="izena"/><br>
         <label for="isan">ISAN:</label><input type="text" name="ISAN"/><br>
@@ -19,6 +23,7 @@
             <option value=4>4/5</option>
             <option value=5>5/5</option>
         </select>
+        <br>
         <button>Bidali</button>
     </form>
 </body>
