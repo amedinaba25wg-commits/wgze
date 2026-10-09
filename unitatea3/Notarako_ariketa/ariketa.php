@@ -10,7 +10,8 @@
     <div id="filmak">
         <?php
             require 'zinema.php';
-            
+            $zinema = new Zinema;
+            if
         ?>
     </div>
     <form method="POST">
@@ -27,5 +28,7 @@
         <br>
         <button>Bidali</button>
     </form>
+    <?php
+    ?>
 </body>
 </html>
