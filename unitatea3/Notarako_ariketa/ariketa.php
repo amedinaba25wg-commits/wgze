@@ -9,6 +9,7 @@
     <center><h1>Ariketa - Top Movies</h1></center>
     <div id="filmak">
         <?php
+            require 'zinema.php';
             
         ?>
     </div>
