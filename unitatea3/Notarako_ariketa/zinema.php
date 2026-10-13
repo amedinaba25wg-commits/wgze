@@ -1,6 +1,6 @@
 <?php
 require 'pelikula.php';
-class zinema {
+class Zinema {
     private $pelikulak;
 
     function __construct() {
@@ -13,6 +13,10 @@ class zinema {
             $isanArray[] = $isan;
         }
         return $isanArray;
+    }
+
+    function getPelikulak() {
+        return $this->pelikulak;
     }
 
     function gehituPelikula($pelikula) {
