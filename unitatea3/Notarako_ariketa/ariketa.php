@@ -11,7 +11,12 @@
         <?php
             require 'zinema.php';
             $zinema = new Zinema;
-            if
+            $izenak = $_POST['izenak'] ?? [];
+            if (isset($_POST['gehitu']) && !empty(trim($_POST['izena']))) {
+                foreach($izenak as $izena) {
+                    echo "<p>" . htmlspecialchars($izena) . "</p>";
+                }
+            }
         ?>
     </div>
     <form method="POST">
@@ -26,9 +31,14 @@
             <option value=5>5/5</option>
         </select>
         <br>
-        <button>Bidali</button>
+        <button type="submit" name="gehitu" value="1">Bidali</button>
+        <?php
+            $kontagailua = 0;
+            foreach($izenak as $izena) {
+                echo '<input type="hidden" name="izenak[' . $kontagailua . ']" value="' . $izena . '">';
+                $kontagailua++;
+            }   
+        ?>
     </form>
-    <?php
-    ?>
 </body>
 </html>
