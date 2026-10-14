@@ -1,5 +1,5 @@
 <?php
-class pelikula {
+class Pelikula {
     private $izena;
     private $isan;
     private $urtea;
