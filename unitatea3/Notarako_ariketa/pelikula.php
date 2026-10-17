@@ -6,16 +6,16 @@ class Pelikula {
     private $puntuazioa;
 
     public function getIzena() {
-        return $izena;
+        return $this->izena;
     }
     public function getIsan() {
-        return $isan;
+        return $this->isan;
     }
     public function getUrtea() {
-        return $urtea;
+        return $this->urtea;
     }
     public function getPuntuazioa() {
-        return $puntuazioa;
+        return $this->puntuazioa;
     }
 
     function __construct($izena, $isan, $urtea, $puntuazioa) {

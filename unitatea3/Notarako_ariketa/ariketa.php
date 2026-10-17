@@ -11,26 +11,18 @@
     <div id="filmak">
         <?php
             require 'zinema.php';
-            $zinema = new Zinema;
+            $zinema = new Zinema();
             $izenak = $_POST['izenak'] ?? [];
             $isanak = $_POST['isanak'] ?? [];
             $urteak = $_POST['urteak'] ?? [];
             $puntuazioak = $_POST['puntuazioak'] ?? [];
 
-            if(isset($_POST['gehitu']) && count($izenak) > 1) {
+            if(isset($_POST['gehitu']) && count($izenak) > 0) {
                 for($i = 0; $i < count($izenak); $i++) {
                     $pelikula = new Pelikula($izenak[$i], $isanak[$i], $urteak[$i], $puntuazioak[$i]);
                     $zinema->gehituPelikula($pelikula);
                 }
-                    echo '<table border="1px solid black"><th><td>Izena</td><td>ISAN</td><td>Urtea</td><td>Puntuazioa</td></th>';
-                foreach ($izenak as $izena) {
-                    echo "<tr><td>" . htmlspecialchars($izena) . "</td>";
-                    echo "<td></td>";
-                }
-                foreach ($zinema->getPelikulak() as $pelikula) {
-                    echo "<tr><td>" . $pelikula->getIzena() . "</td></tr>";
-                }
-                echo "</table>";
+                    echo '<table border="1px solid black"><tr><th>Izena</th><th>ISAN</th><th>Urtea</th><th>Puntuazioa</th></tr>';
             }
             if (isset($_POST['gehitu'])) {
                 if(empty($_POST['izena']) && empty($_POST['isan'])) {
@@ -50,9 +42,20 @@
                 }
                 else {
                     $pelikula = new Pelikula($_POST['izena'], $_POST['isan'], $_POST['urtea'], $_POST['puntuazioa']);
-                    $zinema->gehituPelikula($pelikula);
+                    if($zinema->gehituPelikula($pelikula) == false) {
+                        echo '<script>alert("Ezin izan da pelikula gehitu hurrengo erroreak gertatu izana izan daiteke: isan zenbakia ez edukitzea 8 karaktere, izan zenbakia errepikatuta egotea")</script>';
+                    };
                 }
-                $izenak[] = trim($_POST['izena']);
+                if(isset($_POST['gehitu']) && count($izenak) > 0) {
+                    foreach ($zinema->getPelikulak() as $pelikula) {
+                        echo "<tr><td>" . $pelikula->getIzena() . "</td>";
+                        echo "<td>" . $pelikula->getIsan() . "</td>";
+                        echo "<td>" . $pelikula->getUrtea() . "</td>";
+                        echo "<td>" . $pelikula->getPuntuazioa() . "</td</tr>";
+                    }
+                    echo "</table>";
+                }
+                //$izenak[] = trim($_POST['izena']);
                 //$isanak[] = trim($_POST['isan']);
                 //$urteak[] = trim($_POST['urtea']);
                 //$puntuazioak[] = trim($_POST['puntuazioa']);
@@ -94,7 +97,7 @@
             if($zinema->getPelikulak()) {
                 foreach($zinema->getPelikulak() as $pelikula) {
                     echo '<input type="hidden" name="izenak[' . $kontagailua . ']" value="'
-                    . htmlspecialchars($pelikual->getIzena()) . '">';
+                    . htmlspecialchars($pelikula->getIzena()) . '">';
 
                     echo '<input type="hidden" name="isanak[' . $kontagailua . ']" value="'
                     . htmlspecialchars($pelikula->getIsan()) . '">';
@@ -104,6 +107,7 @@
 
                     echo '<input type="hidden" name="puntuazioak[' . $kontagailua . ']" value="'
                     . htmlspecialchars($pelikula->getPuntuazioa()) . '">';
+                    $kontagailua++;
                 }
             }
         ?>
