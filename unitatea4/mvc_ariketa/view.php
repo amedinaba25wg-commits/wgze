@@ -12,7 +12,8 @@ class View
 	public function output(){
     	  return '<p><a href="mvc.php?action=clicked">' . 
 $this->model->string . "</a></p>" . 
-"<p>Klik kopurua: " . $this->model->getKlikKopurua() . "</p>";
+"<p>Klik kopurua: " . $this->model->getKlikKopurua() . "</p>" . 
+'<p><a href=">Ber</a></p>';
 
 	}
 }

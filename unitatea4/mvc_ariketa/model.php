@@ -19,5 +19,9 @@ class Model
     public function getKlikKopurua() {
         return $this->klikKopurua;
     }
+    public function klikKopuruaZero() {
+        $this->klkiKopurua = 0;
+        $_SESSION['klikSession'] = 0;
+    }
 }
 ?>
