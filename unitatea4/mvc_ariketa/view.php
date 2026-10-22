@@ -13,7 +13,7 @@ class View
     	  return '<p><a href="mvc.php?action=clicked">' . 
 $this->model->string . "</a></p>" . 
 "<p>Klik kopurua: " . $this->model->getKlikKopurua() . "</p>" . 
-'<p><a href=">Ber</a></p>';
+'<p><a href="mvc.php?action=reset"/>' . $this->model->string2 . '</a></p>';
 
 	}
 }
