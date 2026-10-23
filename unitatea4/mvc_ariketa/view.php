@@ -14,7 +14,8 @@ class View
 		$this->model->string . "</a></p>" . 
 		"<p>Klik kopurua: " . $this->model->getKlikKopurua() . "</p>" . 
 		'<p><a href="mvc.php?action=reset"/>' . $this->model->string2 . '</a></p>' . 
-		'<p><a href="mvc.php?action=bestebat">edozer</a></p>';
+		'<p><a href="mvc.php?action=beste_bat">edozer</a></p>';
+
 	}
 }
 ?>

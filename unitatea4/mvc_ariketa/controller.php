@@ -3,6 +3,7 @@ class Controller
 {
 	private $model;
 
+
 	//Kontroladorearen objektua sortuko du
 	public function __construct($model) {
     	  $this->model = $model;
@@ -16,6 +17,8 @@ class Controller
 	public function reset() {
 		$this->model->klikKopuruaZero();
 	}
+
+
 }
 
 ?>

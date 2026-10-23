@@ -4,10 +4,12 @@ class Model
     public $string;
     private $klikKopurua;
     public $string2;
+    private $onartutakoak; //Zerrenda zein komando onartzen dira
     //Objektua sortzeko, objektuak edukiko du sessioan gorde den klik kopurua
     public function __construct(){
         $this->string = 'MVC + PHP = Awesome!';
         $this->string2 = 'Berrezarri';
+        $this->onartutakoak = ['clicked', 'reset'];
         if(isset($_SESSION['klikSession'])) {
             $this->klikKopurua = $_SESSION['klikSession'];
         }
@@ -30,6 +32,11 @@ class Model
     public function klikKopuruaZero() {
         $this->klikKopurua = 0;
         $_SESSION['klikSession'] = 0;
+    }
+
+    //Onartutakoak bueltatu
+    public function getOnartutakoak() {
+        return $this->onartutakoak;
     }
 }
 ?>
