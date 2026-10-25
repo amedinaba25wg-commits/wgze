@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-Movies Ariketa</title>
+</head>
+<body>
+    <center><h1>Top movies Ariketa</h1>
+    <?php
+        require "funtzioak.php";
+        $zinema = zinemaSortu();
+        if(isset($_POST['bidali'])) {
+            try {
+                if(empty($_POST['izena']) && empty($_POST['isan']) && empty($_POST['urtea'])) {
+                    throw new Exception("Errorea filma bidaltzean: Ez dago ez isan zenbakirik ez izenik ez urterik");
+                }
+                elseif(empty($_POST['izena']) && empty($_POST['isan'])) {
+                    throw new Exception("Errorea filma bidaltzen: Ez dago ez izenik ez isan zenbakirik");
+                }
+                elseif(empty($_POST['izena']) && empty("urtea")) {
+                    throw new Exception("Ez da ez izenik ez urterik sartu");
+                }
+                elseif(empty($_POST['izena'])) {
+                    throw new Exception("Ez da izenik sarut");
+                }
+                elseif(empty($_POST['urtea'])) {
+                    throw new Exception("Ez da urterik sartu");
+                }
+                else {
+                    if(empty($_POST["isan"])) {
+                        echo "<p>Hau oraindik eraiki gabe dago</p>";
+                    }
+                    else {
+                        try {
+                            $filma = new Filma($_POST['izena'], $_POST['isan'], $_POST['urtea'], $_POST['puntuazioa']);
+                            $zinema->gehituFilma($filma);
+                        }
+                        catch(Exception $e) {
+                            echo "<script>alert('Errorea filma gehitzerakoan: " . $e->getMessage() . "')</script>";
+                        }
+                    }
+                }
+            }
+            catch (Exception $e) {
+                echo "<script>alert('" . $e->getMessage() . "')</script>";
+            }
+        }
+        echo taulaSortu($zinema);
+    ?>
+    <form method="Post" style="display: flex; flex-direction: column; align-content: left; width: 200px">
+        <label for="izena">Izena: </label>
+        <input type="text" name="izena" /><br>
+        <label for="isan">ISAN: </label>
+        <input type="text" name="isan" /><br>
+        <label for="urtea">Urtea: </label>
+        <input type="number" name="urtea" /><br>
+        <label for="puntuazioa">Puntuazioa</label>
+        <select name="puntuazioa">
+            <option value="1">1/5</option>
+            <option value="2">2/5</option>
+            <option value="3">3/5</option>
+            <option value="4">4/5</option>
+            <option value="5">5/5</option>
+        </select><br>
+        <input type="submit" name="bidali" value="bidali" />
+        <?php
+            echo hiddenSortu($zinema);
+        ?>
+    </form>
+    
+</center>
+</body>
+</html>
