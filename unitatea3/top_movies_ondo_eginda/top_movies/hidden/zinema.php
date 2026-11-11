@@ -32,6 +32,11 @@ class Zinema {
             throw new Exception("Errorea Filma gehitzerakoan zinemara: " . $e->getMessage());
         }
     }
+    public function ezabatuFilma($isan) {
+        $this->filmak = array_values(array_filter($this->filmak, function($filma) use ($isan) {
+            return $filma->getIsan() != $isan;
+        }));
+    }
 
 }
 ?>

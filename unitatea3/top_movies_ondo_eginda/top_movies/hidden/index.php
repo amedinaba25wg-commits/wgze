@@ -21,12 +21,12 @@
                 elseif(empty($_POST['izena']) && empty("urtea")) {
                     throw new Exception("Ez da ez izenik ez urterik sartu");
                 }
-                elseif(empty($_POST['izena'])) {
-                    throw new Exception("Ez da izenik sarut");
-                }
                 else {
                     if(empty($_POST['isan']) && !empty($_POST['izena'])) {
                         $zinema2 = bilatuFilma($zinema, $_POST['izena']);
+                    }
+                    elseif(empty($_POST['izena']) && !empty($_POST['isan'])) {
+                        $zinema->ezabatuFilma($_POST['isan']);
                     }
                     else {
                         try {
