@@ -2,8 +2,16 @@
 require "zinema.php";
 //Hemen funtzioak gestionatu egingo dira
 
-function bilatuFilma() {
-
+function bilatuFilma($zinema, $izena) {
+    $pelikulak = $zinema->getFilmak();
+    $filtratutako_pelikulak = [];
+    $zinema = new Zinema;
+    foreach($pelikulak as $pelikula1) {
+        if(str_contains(strtolower($pelikula1->getIzena()), strtolower($izena))) {
+            $zinema->gehituFilma($pelikula1);
+        }
+    }
+    return $zinema;
 }
 
 //Funtzio honek zinema objektu bat sortuko du eta jadanik dagoen informazioa gordeko du

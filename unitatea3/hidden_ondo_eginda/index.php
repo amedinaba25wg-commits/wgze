@@ -22,10 +22,10 @@
                     throw new Exception("Ez da ez izenik ez urterik sartu");
                 }
                 elseif(empty($_POST['izena'])) {
-                    throw new Exception("Ez da izenik sarut");
+                    echo "<p>ISAN zenbakia dago baina ez urterik";
                 }
-                elseif(empty($_POST['urtea'])) {
-                    throw new Exception("Ez da urterik sartu");
+                elseif(empty($_POST['urtea'] && empty($_POST['isan']) && !empty($_POST['izena']))) {
+                    taulaSortu(bilatuFilma($zinema, $_POST['izena']));
                 }
                 else {
                     if(empty($_POST["isan"])) {

@@ -24,12 +24,9 @@
                 elseif(empty($_POST['izena'])) {
                     throw new Exception("Ez da izenik sarut");
                 }
-                elseif(empty($_POST['urtea'])) {
-                    throw new Exception("Ez da urterik sartu");
-                }
                 else {
-                    if(empty($_POST["isan"])) {
-                        echo "<p>Hau oraindik eraiki gabe dago</p>";
+                    if(empty($_POST['isan']) && !empty($_POST['izena'])) {
+                        $zinema2 = bilatuFilma($zinema, $_POST['izena']);
                     }
                     else {
                         try {
@@ -46,7 +43,13 @@
                 echo "<script>alert('" . $e->getMessage() . "')</script>";
             }
         }
-        echo taulaSortu($zinema);
+        if(!isset($zinema2)) {
+            echo taulaSortu($zinema);
+        }
+        else {
+            echo taulaSortu($zinema2);
+        }
+        
     ?>
     <form method="Post" style="display: flex; flex-direction: column; align-content: left; width: 200px">
         <label for="izena">Izena: </label>
