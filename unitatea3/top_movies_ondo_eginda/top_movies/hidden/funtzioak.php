@@ -34,9 +34,10 @@ function zinemaSortu() {
 function taulaSortu($zinema) {
     $html_egitura = "<table><tr><th>Izena</th><th>Isan</th><th>Urtea</th><th>Puntuazioa</th></tr>";
     foreach($zinema->getFilmak() as $filma) {
-        $html_egitura = $html_egitura . "<tr><td>" . $filma->getIzena() . "</td><td>"
-        . $filma->getIsan() . "</td><td>" . $filma->getUrtea() . "</td><td>" . $filma->getPuntuazioa()
+        $html_egitura = $html_egitura . "<tr><td>" . htmlentities($filma->getIzena()) . "</td><td>"
+        . htmlentities($filma->getIsan()) . "</td><td>" . htmlentities($filma->getUrtea()) . "</td><td>" . htmlentities($filma->getPuntuazioa())
         . "</td></tr>";
+        $html
     }
     return $html_egitura;
 }
@@ -48,19 +49,19 @@ function hiddenSortu($zinema) {
     foreach($zinema->getFilmak() as $filma) {
         //Izena array-ean gorde
         $html_egitura = $html_egitura . '<input type="hidden" name="izenak['
-        . $kontagailua . ']" value="' . $filma->getIzena() . '" />';
+        . $kontagailua . ']" value="' . htmlentities($filma->getIzena()) . '" />';
 
         //isan zenbakia arrayan gorde
         $html_egitura = $html_egitura . '<input type="hidden" name="isanak['
-        . $kontagailua . ']" value="' . $filma->getIsan() . '" />';
+        . $kontagailua . ']" value="' . htmlentities($filma->getIsan()) . '" />';
         
         //urtea arrayan gorde
         $html_egitura = $html_egitura . '<input type="hidden" name="urteak['
-        . $kontagailua . ']" value="' . $filma->getUrtea() . '" />';
+        . $kontagailua . ']" value="' . htmlentities($filma->getUrtea()) . '" />';
 
         //puntuazioa arrayan gorde
         $html_egitura = $html_egitura . '<input type="hidden" name="puntuazioak['
-        . $kontagailua . ']" value="' . $filma->getPuntuazioa() . '" />';
+        . $kontagailua . ']" value="' . htmlentities($filma->getPuntuazioa()) . '" />';
 
         //Kontagailuak igotzea hurrengo filma hidden bezala gordeko du:
         $kontagailua++;

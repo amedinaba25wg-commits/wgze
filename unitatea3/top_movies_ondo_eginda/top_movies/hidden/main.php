@@ -7,7 +7,7 @@
 </head>
 <body max-width="1480px">
     <?php $erabiltzailea = $_POST['erabiltzailea'] ?? "Anonimoa"; ?>
-    <p>erabiltzailea: "<?= htmlspecialchars($erabiltzailea, ENT_QUOTES, 'UTF-8') ?>"</p>
+    <p>erabiltzailea: "<?= htmlentities($erabiltzailea, ENT_QUOTES, 'UTF-8') ?>"</p>
     <center><h1>Top movies Ariketa</h1>
     <?php
         require "funtzioak.php";
@@ -59,11 +59,11 @@
     
     <form method="Post" style="display: flex; flex-direction: column; align-content: left; width: 200px">
         <label for="izena">Izena: </label>
-        <input type="text" name="izena" value="<?= htmlspecialchars($izena, ENT_QUOTES, 'UTF-8') ?>" /><br>
+        <input type="text" name="izena" value="<?= htmlentities($izena, ENT_QUOTES, 'UTF-8') ?>" /><br>
         <label for="isan">ISAN: </label>
-        <input type="text" name="isan" value="<?= htmlspecialchars($isan, ENT_QUOTES, 'UTF-8') ?>" /><br>
+        <input type="text" name="isan" value="<?= htmlentities($isan, ENT_QUOTES, 'UTF-8') ?>" /><br>
         <label for="urtea">Urtea: </label>
-        <input type="number" name="urtea" value="<?= htmlspecialchars($urtea, ENT_QUOTES, 'UTF-8') ?>" /><br>
+        <input type="number" name="urtea" value="<?= htmlentities($urtea, ENT_QUOTES, 'UTF-8') ?>" /><br>
         <label for="puntuazioa">Puntuazioa</label>
         <select name="puntuazioa">
             <option value="1">1/5</option>
