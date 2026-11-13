@@ -22,6 +22,7 @@ class Zinema {
                 foreach($this->filmak as $filma1) {
                     if($filma1->getIsan() == $filma->getIsan()) {
                         //Filma eguneratuko da existitzen bada
+                        $this->ezabatufilma($filma->getIsan());
                        $this->filmak[$filma->getIsan()] = $filma;
                        $existitzenDa = TRUE;
                     }
