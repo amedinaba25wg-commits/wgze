@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top-Movies Ariketa</title>
 </head>
-<body>
+<body max-width="1480px">
+    <?php $erabiltzailea = $_POST['erabiltzailea'] ?? "Anonimoa"; ?>
+    <p>erabiltzailea: "<?= htmlspecialchars($erabiltzailea, ENT_QUOTES, 'UTF-8') ?>"</p>
     <center><h1>Top movies Ariketa</h1>
     <?php
         require "funtzioak.php";
@@ -54,6 +56,7 @@
         $isan = $_POST['isan'] ?? "";
         $urtea = $_POST['urtea'] ?? "";
     ?>
+    
     <form method="Post" style="display: flex; flex-direction: column; align-content: left; width: 200px">
         <label for="izena">Izena: </label>
         <input type="text" name="izena" value="<?= htmlspecialchars($izena, ENT_QUOTES, 'UTF-8') ?>" /><br>
