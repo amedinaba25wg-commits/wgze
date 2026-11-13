@@ -49,15 +49,18 @@
         else {
             echo taulaSortu($zinema2);
         }
-        
+        //Mantentzeko formularioaren balioak:
+        $izena = $_POST['izena'];
+        $isan = $_POST['isan'];
+        $urtea = $_POST['urtea'];
     ?>
     <form method="Post" style="display: flex; flex-direction: column; align-content: left; width: 200px">
         <label for="izena">Izena: </label>
-        <input type="text" name="izena" /><br>
+        <input type="text" name="izena" value="<?= htmlspecialchars($izena, ENT_QUOTES, 'UTF-8') ?>" /><br>
         <label for="isan">ISAN: </label>
-        <input type="text" name="isan" /><br>
+        <input type="text" name="isan" value="<?= htmlspecialchars($isan, ENT_QUOTES, 'UTF-8') ?>" /><br>
         <label for="urtea">Urtea: </label>
-        <input type="number" name="urtea" /><br>
+        <input type="number" name="urtea" value="<?= htmlspecialchars($urtea, ENT_QUOTES, 'UTF-8') ?>" /><br>
         <label for="puntuazioa">Puntuazioa</label>
         <select name="puntuazioa">
             <option value="1">1/5</option>
