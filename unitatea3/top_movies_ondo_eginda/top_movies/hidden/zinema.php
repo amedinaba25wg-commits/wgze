@@ -13,30 +13,28 @@ class Zinema {
     }
 
     public function gehituFilma($filma) {
-        try { //Filmarik ez badago oraindik filma gehituko da
             if(empty($this->filmak)) {
                 $this->filmak[$filma->getIsan()] = $filma;
             }
             else {
+                $existitzenDa = FALSE;
                 //Foreach honekin konparatuko du ea existitzen den film bat isan horrekin.
                 foreach($this->filmak as $filma1) {
                     if($filma1->getIsan() == $filma->getIsan()) {
-                        throw new Exception("Ya existitzen da film bat ISAN zenbaki horrekin");
+                        //Filma eguneratuko da existitzen bada
+                       $this->filmak[$filma->getIsan()] = $filma;
+                       $existitzenDa = TRUE;
                     }
                 }
-                $this->filmak[] = $filma;
+                if(!$existitzenDa) {
+                    $this->filmak[] = $filma;
+                }
             }
-        }
-        catch(Exception $e) { //Hemen lortuko dira errore guztiak filmak sortzerakoan
-        //Bai erroreak existitzen bada hemen kudeatuta edo filmaren datuak gaizki badaude filma klasean kudeatuta.
-            throw new Exception("Errorea Filma gehitzerakoan zinemara: " . $e->getMessage());
-        }
     }
     public function ezabatuFilma($isan) {
         $this->filmak = array_values(array_filter($this->filmak, function($filma) use ($isan) {
             return $filma->getIsan() != $isan;
         }));
     }
-
 }
 ?>

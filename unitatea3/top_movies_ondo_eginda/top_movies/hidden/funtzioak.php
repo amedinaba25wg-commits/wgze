@@ -32,13 +32,14 @@ function zinemaSortu() {
 
 //taula bat sortu zinemako filmekin
 function taulaSortu($zinema) {
-    $html_egitura = "<table><tr><th>Izena</th><th>Isan</th><th>Urtea</th><th>Puntuazioa</th></tr>";
+    echo "<style>table, th, tr, td { border: solid black 1px; border-collapse: collapse} td, th { padding: 5px;}</style>";
+    $html_egitura = "<table style='border: solid black 1px'><tr><th>Izena</th><th>Isan</th><th>Urtea</th><th>Puntuazioa</th></tr>";
     foreach($zinema->getFilmak() as $filma) {
         $html_egitura = $html_egitura . "<tr><td>" . htmlentities($filma->getIzena()) . "</td><td>"
         . htmlentities($filma->getIsan()) . "</td><td>" . htmlentities($filma->getUrtea()) . "</td><td>" . htmlentities($filma->getPuntuazioa())
         . "</td></tr>";
-        $html
     }
+    $html_egitura .= "</table>";
     return $html_egitura;
 }
 
